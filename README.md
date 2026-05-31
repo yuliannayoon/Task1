@@ -23,6 +23,15 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 * **Practical Daily Energy Budget (20% Design Margin):** 2.63 mAh / day (Equivalent to a continuous 110 µA average current)
 
 
+## ** ㅇㅇㅇ**
+```mermaid
+xychart-beta
+    title "Sampling Frequency vs Battery Life"
+    x-axis ["1s", "10s", "30s", "60s", "300s"]
+    y-axis "Battery Life (h)" 0 --> 80
+    line [2.5, 8, 18, 30, 72]
+```
+
 ## 📦 Deliverables
 ## 📊 Integrated Sensor Analysis Master Table
 

@@ -26,7 +26,7 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 
 
-
+## 📦 Deliverables
 ## 📊 Integrated Sensor Analysis Master Table
 
 * **Power Source:** 3.6V 1200mAh Lithium Primary Battery

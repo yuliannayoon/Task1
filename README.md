@@ -51,52 +51,6 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
-🏗️ Hardware Block Diagram Comprehensive Layout
-================================================================================
-
-The overall layout is structured so that Power flows from top to bottom, 
-while Data flows from left to right, ultimately transmitting wirelessly via BLE.
-
-1. Power Management Layer (Top Layer - Red Routing)
---------------------------------------------------------------------------------
-This block represents the primary power distribution path, starting from the battery 
-down to the system rails. Position this at the very top of your diagram.
-
-[ 3.6V Primary Lithium Battery ] (Usable Capacity: 85% / 1020mAh Management Margin)
-       ⬇️ (Main Power Input Line)
-[ TPS62840 DC-DC Buck Converter ] (Iq = 60 nA, 88% Conversion Efficiency)
-       ⬇️ (Output Stage: Low-ESR Bulk Decoupling Capacitor Network)
-          ※ Reservoir circuit designed to suppress the 23.84 mA peak active load.
-       ⬇️ 
-[ 3.3V System Power Rail ] 
-       │
-       ├──────────────────────────┬──────────────────────────┐
-       ▼ (3.3V Power)             ▼ (3.3V Power)             ▼ (3.3V Power)
-       
-2. Control & Connectivity Layer (Center Layer - Main Core)
---------------------------------------------------------------------------------
-Place the main microcontroller prominently in the center of the diagram as the brain of the system.
-
-[ nRF52840 MCU ] (Configured in Normal Voltage Mode / 3.3V Operation)
-   • Firmware Operational Profile: 1-Second Wake-up Cycle (5 ms Active / 995 ms Sleep)
-   • Time-Weighted Daily Average Current: 51.00 µA
-       ➡️ (Right Arrow: RF TX Signal) ➔ [ BLE Antenna Block ] (Tx Power: Optimized at 0 dBm)
-
-3. Sensor Input Layer (Left Layer - Inputs)
---------------------------------------------------------------------------------
-Position the sensor blocks on the left side, establishing a clear left-to-right data flow 
-toward the MCU via communication buses.
-
-[ MS5607 Barometric Pressure Sensor ]
-   • Operational Profile: OSR 1024 High-Resolution / 1-Second Sampling Rate
-   • Time-Weighted Daily Average Current: 2.91 µA
-       ➡️ (Arrow pointing to MCU): Interconnected via I2C / SPI Bus ➔ [ nRF52840 MCU ]
-
-[ BME680 Environmental Sensor ]
-   • Operational Profile: Integrated Gas Heater / 300-Second (5-Min) Wide Sampling Rate
-   • Time-Weighted Daily Average Current: 50.00 µA
-       ➡️ (Arrow pointing to MCU): Interconnected via I2C / SPI Bus ➔ [ nRF52840 MCU ]
-
 
 
 

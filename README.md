@@ -3,17 +3,6 @@
 
 Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 Buck Converter, LTC4311 I2C Bus Accelerator, and the BME680 / MS5607 sensor cluster.
 
-### 🛠️ Circuit Diagrams
-#### 1. Power Management (5V Input & DC-DC Buck Converter)
-![Power Management](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/path_to_image/power_management.png)
-
-#### 2. Sensing & I2C Bus Infrastructure (2M Cable Connector & Sensors)
-![Sensing](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/path_to_image/sensing.png)
-
-#### 3. Processing Core (nRF52840 SoC in Normal Voltage Mode & Debug SWD)
-![Processing](https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/path_to_image/processing.png)
-
----
 
 ### 📝 Design Decisions & Assumptions (137 words)
 

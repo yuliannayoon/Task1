@@ -51,6 +51,44 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
+graph TD
+    %% Style Definitions
+    classDef power fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef mcu fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef sensor fill:#dfd,stroke:#333,stroke-width:2px;
+    classDef rf fill:#fdd,stroke:#333,stroke-width:2px;
+
+    %% Power Management Layer (Top)
+    BAT["🔋 3.6V Primary Lithium Battery<br>(85% Usable / 1020mAh Margin)"] -->|"Main Power Input"| BUCK["⚡ TPS62840 DC-DC Buck Converter<br>(Iq = 60 nA / 88% Eff)"]
+    BUCK -->|"Output Stage"| CAP["🔋 Low-ESR Decoupling Cap Network<br>(Suppresses 23.84 mA Peak Load)"]
+    CAP -->|""| RAIL["🔌 3.3V System Power Rail"]
+
+    %% Connected Power Rails
+    RAIL -.->|"3.3V"| MCU
+    RAIL -.->|"3.3V"| MS5607
+    RAIL -.->|"3.3V"| BME680
+
+    %% Sensor Input Layer (Left)
+    subgraph Sensor Input Layer
+        MS5607["🌡️ MS5607 Barometric Sensor<br>(OSR 1024 / 1s Sampling)<br>Avg: 2.91 µA"]
+        BME680["🍃 BME680 Environmental Sensor<br>(Gas Heater / 300s Sampling)<br>Avg: 50.00 µA"]
+    end
+
+    %% Control & Connectivity Layer (Center/Right)
+    MCU["🧠 nRF52840 MCU<br>(Normal Voltage Mode / 3.3V)<br>1s Cycle (5ms Active / 995ms Sleep)<br>Avg: 51.00 µA"]
+    ANT["📡 BLE Antenna Block<br>(Tx Power: 0 dBm Optimized)"]
+
+    %% Data Flow Connections
+    MS5607 -->|"I2C / SPI Bus"| MCU
+    BME680 -->|"I2C / SPI Bus"| MCU
+    MCU -->|"RF TX Signal"| ANT
+
+    %% Applying Styles
+    class BAT,BUCK,CAP,RAIL power;
+    class MCU mcu;
+    class MS5607,BME680 sensor;
+    class ANT rf;
+
 
 ## Summary of your proposed solution
 
@@ -61,14 +99,3 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 * **MS5607 Configuration:** OSR 4096 (Highest Resolution: $I_{active} = 1.4\text{ mA}$, $T_{active} = 8.22\text{ ms}$)
 * **BME680 Configuration:** Default Mode with Gas Sensor Active ($I_{active} = 13\text{ mA}$, $T_{active} = 350\text{ ms}$)
 * **Base System Sleep Current:** $50\,\mu\text{A}$ (Includes MCU Stop Mode baseline)
-
-| Sampling Frequency | Sensor Model | ① Energy Usage (Average Current) | ② Measurement Approach & State | ③ Long-term Viability (Expected Lifespan) |
-| :---: | :---: | :---: | :--- | :--- |
-| **1 sec**<br>**(1 Hz)** | **MS5607** | **$61.1\,\mu\text{A}$**<br>(Low) | **Continuous Tracking**<br>• Triggers once per second.<br>• Short conversion time ($8.22\text{ ms}$). | **Approx. 2.2 Years (818 Days)**<br>• Highly viable for real-time tracking (drones/navigation). |
-| | **BME680** | **$4,583.5\,\mu\text{A}$**<br>($4.58\text{ mA}$ - Critical) | **Heavy Continuous Heating**<br>• Gas heater stays on frequently.<br>• Extremely long active time ($350\text{ ms}$). | **Approx. 10.9 Days**<br>• **Not viable** for long-term battery deployment at this rate. |
-| **30 sec** | **MS5607** | **$50.4\,\mu\text{A}$**<br>(Very Low) | **Intermittent LP Mode**<br>• Sleep state for 29.99 seconds.<br>• Duty Cycle: $0.027\%$ | **Approx. 2.7 Years (992 Days)**<br>• Optimized for smart wearables and ambient tracking. |
-| | **BME680** | **$195.8\,\mu\text{A}$**<br>(Moderate) | **Pulsed Heating LP Mode**<br>• Heater budget is split into 30s intervals.<br>• Duty Cycle: $1.17\%$ | **Approx. 255.3 Days (0.7 Year)**<br>• Moderate viability; acceptable for short-term field tests. |
-| **300 sec**<br>**(5 min)** | **MS5607** | **$50.0\,\mu\text{A}$**<br>(Minimum Baseline) | **Ultra Low Power (ULP)**<br>• 99.99% of time spent in deep sleep.<br>• Converges to hardware baseline current. | **Approx. 2.7 Years (1,000 Days)**<br>• **Physical Limit Reached:** Dominated by battery self-discharge (1–2%/year). |
-| | **BME680** | **$64.6\,\mu\text{A}$**<br>(Low) | **Ultra Low Power (ULP)**<br>• Heater triggers only once every 5 mins.<br>• Maximizes sleep efficiency. | **Approx. 2.1 Years (773 Days)**<br>• **Highly viable** for long-term air quality monitoring stations. |
-
-

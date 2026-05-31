@@ -51,43 +51,60 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
-graph TD
-    %% Style Definitions
-    classDef power fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef mcu fill:#bbf,stroke:#333,stroke-width:2px;
-    classDef sensor fill:#dfd,stroke:#333,stroke-width:2px;
-    classDef rf fill:#fdd,stroke:#333,stroke-width:2px;
+🏗️ Hardware Block Diagram Comprehensive Layout
+================================================================================
 
-    %% Power Management Layer (Top)
-    BAT["🔋 3.6V Primary Lithium Battery<br>(85% Usable / 1020mAh Margin)"] -->|"Main Power Input"| BUCK["⚡ TPS62840 DC-DC Buck Converter<br>(Iq = 60 nA / 88% Eff)"]
-    BUCK -->|"Output Stage"| CAP["🔋 Low-ESR Decoupling Cap Network<br>(Suppresses 23.84 mA Peak Load)"]
-    CAP -->|""| RAIL["🔌 3.3V System Power Rail"]
+The overall layout is structured so that Power flows from top to bottom, 
+while Data flows from left to right, ultimately transmitting wirelessly via BLE.
 
-    %% Connected Power Rails
-    RAIL -.->|"3.3V"| MCU
-    RAIL -.->|"3.3V"| MS5607
-    RAIL -.->|"3.3V"| BME680
+1. Power Management Layer (Top Layer - Red Routing)
+--------------------------------------------------------------------------------
+This block represents the primary power distribution path, starting from the battery 
+down to the system rails. Position this at the very top of your diagram.
 
-    %% Sensor Input Layer (Left)
-    subgraph Sensor Input Layer
-        MS5607["🌡️ MS5607 Barometric Sensor<br>(OSR 1024 / 1s Sampling)<br>Avg: 2.91 µA"]
-        BME680["🍃 BME680 Environmental Sensor<br>(Gas Heater / 300s Sampling)<br>Avg: 50.00 µA"]
-    end
+[ 3.6V Primary Lithium Battery ] (Usable Capacity: 85% / 1020mAh Management Margin)
+       ⬇️ (Main Power Input Line)
+[ TPS62840 DC-DC Buck Converter ] (Iq = 60 nA, 88% Conversion Efficiency)
+       ⬇️ (Output Stage: Low-ESR Bulk Decoupling Capacitor Network)
+          ※ Reservoir circuit designed to suppress the 23.84 mA peak active load.
+       ⬇️ 
+[ 3.3V System Power Rail ] 
+       │
+       ├──────────────────────────┬──────────────────────────┐
+       ▼ (3.3V Power)             ▼ (3.3V Power)             ▼ (3.3V Power)
+       
+2. Control & Connectivity Layer (Center Layer - Main Core)
+--------------------------------------------------------------------------------
+Place the main microcontroller prominently in the center of the diagram as the brain of the system.
 
-    %% Control & Connectivity Layer (Center/Right)
-    MCU["🧠 nRF52840 MCU<br>(Normal Voltage Mode / 3.3V)<br>1s Cycle (5ms Active / 995ms Sleep)<br>Avg: 51.00 µA"]
-    ANT["📡 BLE Antenna Block<br>(Tx Power: 0 dBm Optimized)"]
+[ nRF52840 MCU ] (Configured in Normal Voltage Mode / 3.3V Operation)
+   • Firmware Operational Profile: 1-Second Wake-up Cycle (5 ms Active / 995 ms Sleep)
+   • Time-Weighted Daily Average Current: 51.00 µA
+       ➡️ (Right Arrow: RF TX Signal) ➔ [ BLE Antenna Block ] (Tx Power: Optimized at 0 dBm)
 
-    %% Data Flow Connections
-    MS5607 -->|"I2C / SPI Bus"| MCU
-    BME680 -->|"I2C / SPI Bus"| MCU
-    MCU -->|"RF TX Signal"| ANT
+3. Sensor Input Layer (Left Layer - Inputs)
+--------------------------------------------------------------------------------
+Position the sensor blocks on the left side, establishing a clear left-to-right data flow 
+toward the MCU via communication buses.
 
-    %% Applying Styles
-    class BAT,BUCK,CAP,RAIL power;
-    class MCU mcu;
-    class MS5607,BME680 sensor;
-    class ANT rf;
+[ MS5607 Barometric Pressure Sensor ]
+   • Operational Profile: OSR 1024 High-Resolution / 1-Second Sampling Rate
+   • Time-Weighted Daily Average Current: 2.91 µA
+       ➡️ (Arrow pointing to MCU): Interconnected via I2C / SPI Bus ➔ [ nRF52840 MCU ]
+
+[ BME680 Environmental Sensor ]
+   • Operational Profile: Integrated Gas Heater / 300-Second (5-Min) Wide Sampling Rate
+   • Time-Weighted Daily Average Current: 50.00 µA
+       ➡️ (Arrow pointing to MCU): Interconnected via I2C / SPI Bus ➔ [ nRF52840 MCU ]
+
+================================================================================
+📈 System Power Verification Scorecard
+================================================================================
+   • Total Peak Current: 23.84 mA (Simultaneous Active State)
+   • Total System Average Current: 103.97 µA
+   • Target Power Budget Limit: 110 µA (➔ 🌟 PASS)
+   • Estimated Operational Lifespan: 409 Days (1.12 Years)
+================================================================================
 
 
 ## Summary of your proposed solution
@@ -95,7 +112,3 @@ graph TD
 
 ## 📊 Integrated Sensor Analysis Master Table
 
-* **Power Source:** 3.6V 1200mAh Lithium Primary Battery
-* **MS5607 Configuration:** OSR 4096 (Highest Resolution: $I_{active} = 1.4\text{ mA}$, $T_{active} = 8.22\text{ ms}$)
-* **BME680 Configuration:** Default Mode with Gas Sensor Active ($I_{active} = 13\text{ mA}$, $T_{active} = 350\text{ ms}$)
-* **Base System Sleep Current:** $50\,\mu\text{A}$ (Includes MCU Stop Mode baseline)

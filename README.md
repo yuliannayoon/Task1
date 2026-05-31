@@ -41,86 +41,23 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 | | **BME680** | **$64.6\,\mu\text{A}$**<br>(Low) | **Ultra Low Power (ULP)**<br>• Heater triggers only once every 5 mins.<br>• Maximizes sleep efficiency. | **Approx. 2.1 Years (773 Days)**<br>• **Highly viable** for long-term air quality monitoring stations. |
 
 
-
-Sampling Frequency vs Battery Life
-
-Battery life increases significantly as the sampling interval grows, due to reduced wake-up cycles and lower average current draw.
-
-<p align="center">
-<svg width="680" height="400" viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New', monospace">
-  <!-- Background -->
-  <rect width="680" height="400" fill="#0d1117" rx="12"/>
-  <!-- Grid lines -->
-  <line x1="80" y1="40" x2="80" y2="320" stroke="#21262d" stroke-width="1"/>
-  <line x1="80" y1="320" x2="640" y2="320" stroke="#21262d" stroke-width="1"/>
-  <!-- Horizontal grid -->
-  <line x1="80" y1="250" x2="640" y2="250" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="180" x2="640" y2="180" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="110" x2="640" y2="110" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
-  <line x1="80" y1="40" x2="640" y2="40" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
-  <!-- Y-axis labels -->
-<text x="70" y="324" fill="#8b949e" font-size="11" text-anchor="end">0h</text>
-<text x="70" y="254" fill="#8b949e" font-size="11" text-anchor="end">24h</text>
-<text x="70" y="184" fill="#8b949e" font-size="11" text-anchor="end">48h</text>
-<text x="70" y="114" fill="#8b949e" font-size="11" text-anchor="end">72h</text>
-<text x="70" y="44" fill="#8b949e" font-size="11" text-anchor="end">96h</text>
-  <!-- X axis points: 1s→130, 10s→242, 30s→354, 60s→466, 300s→578 -->
-  <!-- Y values (hours): 2.5→315, 8→299, 18→278, 30→252, 72→180 -->
-  <!-- Mapping: 0h=320, 96h=40 → 1h = (320-40)/96 = 2.916px -->
-  <!-- Data points Y calculation:
-    2.5h  → 320 - 2.5*2.916  = 312.7 ≈ 313
-    8h    → 320 - 8*2.916    = 296.7 ≈ 297
-    18h   → 320 - 18*2.916   = 267.5 ≈ 268
-    30h   → 320 - 30*2.916   = 232.5 ≈ 233
-    72h   → 320 - 72*2.916   = 110.0 ≈ 110
-  -->
-  <!-- Gradient fill under curve -->
-  <defs>
-    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#39d353" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#39d353" stop-opacity="0.02"/>
-    </linearGradient>
-  </defs>
-  <!-- Area fill -->
-<polygon
- points="130,313 242,297 354,268 466,233 578,110 578,320 130,320"
- fill="url(#areaGrad)"
-/>
-  <!-- Line -->
-<polyline
- points="130,313 242,297 354,268 466,233 578,110"
- fill="none"
- stroke="#39d353"
- stroke-width="2.5"
- stroke-linejoin="round"
- stroke-linecap="round"
-/>
-  <!-- Data point dots -->
-  <circle cx="130" cy="313" r="5" fill="#0d1117" stroke="#39d353" stroke-width="2"/>
-  <circle cx="242" cy="297" r="5" fill="#0d1117" stroke="#39d353" stroke-width="2"/>
-  <circle cx="354" cy="268" r="5" fill="#0d1117" stroke="#39d353" stroke-width="2"/>
-  <circle cx="466" cy="233" r="5" fill="#0d1117" stroke="#39d353" stroke-width="2"/>
-  <circle cx="578" cy="110" r="5" fill="#0d1117" stroke="#39d353" stroke-width="2"/>
-  <!-- Value labels above dots -->
-<text x="130" y="302" fill="#39d353" font-size="10" text-anchor="middle">2.5h</text>
-<text x="242" y="286" fill="#39d353" font-size="10" text-anchor="middle">8h</text>
-<text x="354" y="257" fill="#39d353" font-size="10" text-anchor="middle">18h</text>
-<text x="466" y="222" fill="#39d353" font-size="10" text-anchor="middle">30h</text>
-<text x="578" y="99"  fill="#39d353" font-size="10" text-anchor="middle">72h</text>
-  <!-- X-axis labels -->
-<text x="130" y="340" fill="#8b949e" font-size="11" text-anchor="middle">1 s</text>
-<text x="242" y="340" fill="#8b949e" font-size="11" text-anchor="middle">10 s</text>
-<text x="354" y="340" fill="#8b949e" font-size="11" text-anchor="middle">30 s</text>
-<text x="466" y="340" fill="#8b949e" font-size="11" text-anchor="middle">60 s</text>
-<text x="578" y="340" fill="#8b949e" font-size="11" text-anchor="middle">300 s</text>
-  <!-- Axis titles -->
-<text x="360" y="370" fill="#8b949e" font-size="12" text-anchor="middle">Sampling Interval (seconds)</text>
-<text x="20" y="200" fill="#8b949e" font-size="12" text-anchor="middle" transform="rotate(-90,20,200)">Battery Life (hours)</text>
-  <!-- Chart title -->
-<text x="360" y="22" fill="#f0f6fc" font-size="14" text-anchor="middle" font-weight="bold">Sampling Frequency vs Battery Life</text>
-</svg>
-</p>
-Sampling IntervalBattery Life (est.)1 s~2.5 h10 s~8 h30 s~18 h60 s~30 h300 s~72 h
-
-Note: Values are illustrative. Actual battery life depends on MCU sleep current, radio duty cycle, sensor draw, and battery capacity.
+<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="300" fill="#0d1117" rx="8"/>
+  <line x1="60" y1="20" x2="60" y2="240" stroke="#30363d" stroke-width="1"/>
+  <line x1="60" y1="240" x2="580" y2="240" stroke="#30363d" stroke-width="1"/>
+  <line x1="60" y1="180" x2="580" y2="180" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="60" y1="120" x2="580" y2="120" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="60" y1="60" x2="580" y2="60" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="50" y="244" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">0h</text>
+  <text x="50" y="184" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">24h</text>
+  <text x="50" y="124" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">48h</text>
+  <text x="50" y="64" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">72h</text>
+  <!-- x positions: 1s=110, 10s=215, 30s=320, 60s=425, 300s=530 -->
+  <!-- y: 0h=240, 72h=20 → 1h=3.056px | 2.5h→232, 8h→216, 18h→185, 30h→149, 72h→20 -->
+  <polyline points="110,232 215,216 320,185 425,149 530,20" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="110,232 215,216 320,185 425,149 530,20 530,240 110,240" fill="#58a6ff" fill-opacity="0.08"/>
+  <circle cx="110" cy="232" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="215" cy="216" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="320" cy="185" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="425" cy="149" r="4" fill="#0d1117" stroke="#5
 

@@ -97,14 +97,7 @@ toward the MCU via communication buses.
    • Time-Weighted Daily Average Current: 50.00 µA
        ➡️ (Arrow pointing to MCU): Interconnected via I2C / SPI Bus ➔ [ nRF52840 MCU ]
 
-================================================================================
-📈 System Power Verification Scorecard
-================================================================================
-   • Total Peak Current: 23.84 mA (Simultaneous Active State)
-   • Total System Average Current: 103.97 µA
-   • Target Power Budget Limit: 110 µA (➔ 🌟 PASS)
-   • Estimated Operational Lifespan: 409 Days (1.12 Years)
-================================================================================
+
 
 
 ## Summary of your proposed solution

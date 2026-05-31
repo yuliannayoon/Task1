@@ -16,6 +16,11 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 # Task2
 
+Power Budget and Long-term Viability Analysis
+Target operational Life : 1 Year ( 365 Das)
+Power Source Specification: 3.6V 1200mAh  Lithium Primary Battery
+Theoretical Daily Energy Budget  : 3.29 mAh / day ( Equivalent to a continuous 137 uA average current)
+Practical Daily Energy Budget ( 20% Design Margin): 2.63 mAh / day (Equivalent to a continuous 100 uA average current)
 
 
 

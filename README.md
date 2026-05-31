@@ -22,6 +22,46 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 * **Theoretical Daily Energy Budget:** 3.29 mAh / day (Equivalent to a continuous 137 µA average current)
 * **Practical Daily Energy Budget (20% Design Margin):** 2.63 mAh / day (Equivalent to a continuous 110 µA average current)
 
++-----------------------------------------------------------------------------------+
+|                                 POWER MANAGEMENT                                  |
+|                                                                                   |
+|   +-----------------------+              +-------------------------------------+  |
+|   | 3.6V 1200mAh Battery  | -----------> | TPS62840 Buck Converter (3.3V Out)  |  |
+|   +-----------------------+              +-------------------------------------+  |
+|                                                             |                     |
++-------------------------------------------------------------|---------------------+
+                                                              | VCC (3.3V)
+                                                              v
++-----------------------------------------------------------------------------------+
+|                                     MAIN NODE                                     |
+|                                                                                   |
+|   +---------------------------------------------------------------------------+   |
+|   |                             nRF52840 Processing Block                     |   |
+|   |                             (Normal Voltage Mode)                         |   |
+|   +---------------------------------------------------------------------------+   |
+|             | I2C Bus                                         | USB PHY           |
+|             v                                                 v                   |
+|   +-------------------+                             +-------------------------+   |
+|   |   LTC4311 I2C     |                             |      COMMUNICATION      |   |
+|   |  Bus Accelerator  |                             |     (PC Connection      |   |
+|   +-------------------+                             |     Auto-Detection)     |   |
+|             |                                       +-------------------------+   |
+|      =================== I2C Bus (Shared 400kHz over 2-meter Cable)               |
+|             |                                   |                                 |
+|             v                                   v                                 |
+|   +-------------------+               +-------------------+                       |
+|   |   MS5607 Sensor   |               |   BME680 Sensor   |                       |
+|   |  (Baro/Altitude)  |               | (Gas/Environment) |                       |
+|   |   Address: 0x76   |               |   Address: 0x77   |                       |
+|   |  (SDO tied to GND)|               |  (CSB tied to VCC)|                       |
+|   +-------------------+               +-------------------+                       |
+|          SENSING                             SENSING                              |
++-----------------------------------------------------------------------------------+
+
+
+
+
+
 
 ## 📦 Deliverables
 ## 📊 Integrated Sensor Analysis Master Table

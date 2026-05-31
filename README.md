@@ -32,6 +32,16 @@ xychart-beta
     line [2.5, 8, 18, 30, 72]
 ```
 
+
+##**ㅇㅇㅇ**
+```mermaid
+xychart-beta
+    title "Sensor Resolution vs Energy Cost per Sample"
+    x-axis ["OSR 256", "OSR 512", "OSR 1024", "OSR 2048", "OSR 4096"]
+    y-axis "Energy Cost (uAs)" 0 --> 13
+    bar [0.756, 1.484, 2.912, 5.782, 11.508]
+```
+
 ## 📦 Deliverables
 ## 📊 Integrated Sensor Analysis Master Table
 

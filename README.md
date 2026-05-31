@@ -41,23 +41,3 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 | | **BME680** | **$64.6\,\mu\text{A}$**<br>(Low) | **Ultra Low Power (ULP)**<br>• Heater triggers only once every 5 mins.<br>• Maximizes sleep efficiency. | **Approx. 2.1 Years (773 Days)**<br>• **Highly viable** for long-term air quality monitoring stations. |
 
 
-<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
-  <rect width="600" height="300" fill="#0d1117" rx="8"/>
-  <line x1="60" y1="20" x2="60" y2="240" stroke="#30363d" stroke-width="1"/>
-  <line x1="60" y1="240" x2="580" y2="240" stroke="#30363d" stroke-width="1"/>
-  <line x1="60" y1="180" x2="580" y2="180" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="60" y1="120" x2="580" y2="120" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="60" y1="60" x2="580" y2="60" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
-  <text x="50" y="244" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">0h</text>
-  <text x="50" y="184" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">24h</text>
-  <text x="50" y="124" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">48h</text>
-  <text x="50" y="64" fill="#8b949e" font-size="10" text-anchor="end" font-family="monospace">72h</text>
-  <!-- x positions: 1s=110, 10s=215, 30s=320, 60s=425, 300s=530 -->
-  <!-- y: 0h=240, 72h=20 → 1h=3.056px | 2.5h→232, 8h→216, 18h→185, 30h→149, 72h→20 -->
-  <polyline points="110,232 215,216 320,185 425,149 530,20" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="110,232 215,216 320,185 425,149 530,20 530,240 110,240" fill="#58a6ff" fill-opacity="0.08"/>
-  <circle cx="110" cy="232" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
-  <circle cx="215" cy="216" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
-  <circle cx="320" cy="185" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
-  <circle cx="425" cy="149" r="4" fill="#0d1117" stroke="#5
-

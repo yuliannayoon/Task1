@@ -2,6 +2,9 @@
 ## 📄 Schematic Document
 
 Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 Buck Converter, LTC4311 I2C Bus Accelerator, and the BME680 / MS5607 sensor cluster.
+Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 Buck Converter, LTC4311 I2C Bus Accelerator, and the BME680 / MS5607 sensor cluster. 
+
+You can view the full schematic here: **[[TASK1_Sch.pdf](./TASK1_Sch.pdf)]**
 
 
 ### 📝 Design Decisions & Assumptions (137 words)

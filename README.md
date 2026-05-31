@@ -46,6 +46,12 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 
 ## 📦 Deliverables
+
+## Summary of your proposed solution
+
+## Summary of your proposed solution
+
+
 ## 📊 Integrated Sensor Analysis Master Table
 
 * **Power Source:** 3.6V 1200mAh Lithium Primary Battery

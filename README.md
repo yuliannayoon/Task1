@@ -20,7 +20,7 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 > 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM LAYOUT.pdf)**
 
-* ##
+---
 
 
 ##  Sampling Frequency vs Battery Life 

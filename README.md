@@ -51,14 +51,11 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
-
 linechart
     title "TX Power vs Current Consumption"
     x-axis [-20 dBm, -4 dBm, 0 dBm, 8 dBm]
     y-axis "Current (uA)" 0 --> 250
     line [54.3, 103, 100, 238]
-
-
 
 
 ## Summary of your proposed solution

@@ -51,14 +51,26 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
-linechart
-    title "TX Power vs Current Consumption"
-    x-axis [-20 dBm, -4 dBm, 0 dBm, 8 dBm]
-    y-axis "Current (uA)" 0 --> 250
-    line [54.3, 103, 100, 238]
 
 
 ## Summary of your proposed solution
 ## 📊 Integrated Sensor Analysis Master Table
 
+## 📦 Deliverables
+
+## Summary of your proposed solution
+본 솔루션은 ultra-low $I_q$ Buck Converter 기반의 전원단 설계와 독립적인 $I^2C$ 주소 설정을 통해 시스템의 장기 생존성을 확보했습니다. 분석 데이터에 따르면 무선 송신 출력(TX Power) 및 센서 해상도(OSR) 제어는 배터리 수명에 직접적인 영향을 미칩니다. 시스템 마진을 고려할 때 OSR 1024 해상도와 300s 샘플링 주기를 채택하는 것이 1년 이상의 동작 수명을 보장하는 최적의 시나리오입니다.
+
+
+## 📊 Integrated Sensor Analysis Master Table
+
+### 📈 TX Power vs Current Consumption
+무선 송신 출력 변화에 따른 전류 소모량 트렌드는 아래 차트와 같이 비선형적으로 증가하므로, 전력 버젯 관리 시 소모 전류가 급증하는 8 dBm 구간의 동작 가동 시간(Duty Cycle) 최적화가 필수적입니다.
+
+```mermaid
+xychart-beta
+    title "TX Power vs Current Consumption"
+    x-axis ["-20 dBm", "-4 dBm", "0 dBm", "8 dBm"]
+    y-axis "Current (uA)" 0 --> 250
+    line [54.3, 103, 100, 238]
 

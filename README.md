@@ -69,8 +69,6 @@ Below is the structured power breakdown for a single operational cycle ($T_{peri
 | **Total (1 Cycle)** | **300,000.00** | — | — | **3,536.020** |
 
 ---
----
-
 
 ## 📦 Deliverables
 

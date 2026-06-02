@@ -73,6 +73,11 @@ Below is the structured power breakdown for a single operational cycle ($T_{peri
 
 
 
+
+## 📦 Deliverables
+
+## Summary of your proposed solution
+
 ##  Sampling Frequency vs Battery Life 
 ```mermaid
 xychart-beta
@@ -91,11 +96,6 @@ xychart-beta
     bar [0.756, 1.484, 2.912, 5.782, 11.508]
 ```
 Lowering the resolution minimizes energy consumption to a near-negligible level, but it inevitably degrades the sensor's detection performance. On the other hand, maximizing the resolution pushes the energy cost up to approximately 15 times that of the OSR 256 baseline. Therefore, looking at the data, OSR 1024 can be considered the most viable option as it provides the ideal balance between energy cost and precision.
-
-
-## 📦 Deliverables
-
-## Summary of your proposed solution
 
 
 ## 🧠 Engineering Notes & Power Optimization Insights

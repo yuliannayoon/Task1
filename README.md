@@ -20,29 +20,6 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 > 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM%20LAYOUT.pdf)**
 
-##  Sampling Frequency vs Battery Life 
-```mermaid
-xychart-beta
-    title "Sampling Frequency vs Battery Life"
-    x-axis ["1s", "10s", "30s", "60s", "300s"]
-    y-axis "Battery Life (h)" 0 --> 80
-    line [2.5, 8, 18, 30, 72]
-```
-
-## **Sensor Resolution vs Energy Cost per Sample**
-```mermaid
-xychart-beta
-    title "Sensor Resolution vs Energy Cost per Sample"
-    x-axis ["OSR 256", "OSR 512", "OSR 1024", "OSR 2048", "OSR 4096"]
-    y-axis "Energy Cost (uAs)" 0 --> 13
-    bar [0.756, 1.484, 2.912, 5.782, 11.508]
-```
-Lowering the resolution minimizes energy consumption to a near-negligible level, but it inevitably degrades the sensor's detection performance. On the other hand, maximizing the resolution pushes the energy cost up to approximately 15 times that of the OSR 256 baseline. Therefore, looking at the data, OSR 1024 can be considered the most viable option as it provides the ideal balance between energy cost and precision.
-
-
-## 📦 Deliverables
-
-## Summary of your proposed solution
 ## 🔋 System Power Budget & Battery Specification
 
 ### 1. Battery & Hardware Baseline
@@ -92,4 +69,50 @@ Below is the structured power breakdown for a single operational cycle ($T_{peri
 | **Total (1 Cycle)** | **300,000.00** | — | — | **3,536.020** |
 
 ---
+---
 
+
+
+##  Sampling Frequency vs Battery Life 
+```mermaid
+xychart-beta
+    title "Sampling Frequency vs Battery Life"
+    x-axis ["1s", "10s", "30s", "60s", "300s"]
+    y-axis "Battery Life (h)" 0 --> 80
+    line [2.5, 8, 18, 30, 72]
+```
+
+## **Sensor Resolution vs Energy Cost per Sample**
+```mermaid
+xychart-beta
+    title "Sensor Resolution vs Energy Cost per Sample"
+    x-axis ["OSR 256", "OSR 512", "OSR 1024", "OSR 2048", "OSR 4096"]
+    y-axis "Energy Cost (uAs)" 0 --> 13
+    bar [0.756, 1.484, 2.912, 5.782, 11.508]
+```
+Lowering the resolution minimizes energy consumption to a near-negligible level, but it inevitably degrades the sensor's detection performance. On the other hand, maximizing the resolution pushes the energy cost up to approximately 15 times that of the OSR 256 baseline. Therefore, looking at the data, OSR 1024 can be considered the most viable option as it provides the ideal balance between energy cost and precision.
+
+
+## 📦 Deliverables
+
+## Summary of your proposed solution
+
+
+## 🧠 Engineering Notes & Power Optimization Insights
+
+> 💡 **Developer's Note:** The notes below detail our hardware and firmware-level optimizations implemented to cut off structural current leakage and minimize overall power consumption compared to the baseline prototype.
+
+#### 1. Hardware-Level Power Conversion Efficiency
+* **Internal Core Voltage Dynamics:** Even though an external 3.3V power rail is supplied to the system, the internal core operating voltage of the nRF52840 MCU drops down to **1.3V**.
+* **LDO vs. Buck Converter:** Instead of a conventional LDO regulator, which wastes energy through heat, we integrated a **high-efficiency DC-DC Buck Converter** into the power management layer.
+* **The Result:** This structural change reduced the active mode hardware current from its raw **12.0 mA** baseline down to an equivalent **4.8 mA** on the battery side, saving over 60% of active power.
+
+#### 2. Firmware-Driven I2C Peripheral Management
+* **Active Run Current Bleeding:** Leaving the I2C communication peripheral enabled or in an idle state after data collection causes continuous, unnecessary current leakage.
+* **Aggressive Cut-off Strategy:** We optimized the firmware sequence to **completely disable and power down the I2C module** immediately after receiving the sensor samples.
+* **The Result:** This simple software interface adjustment successfully saved **500 $\mu\text{A}$** of active run current that would otherwise be wasted.
+
+#### 3. Sensor Profile Optimization & Bus Trimming
+* **BME680 Forced Mode Operation:** To avoid constant power drain, the BME680 environmental sensor is configured to run in **Forced Mode**. The sensor wakes up, triggers the gas heater core, captures a single sample, and immediately returns to a deep sleep state.
+* **Bus Accelerator Trimming:** We re-evaluated the necessity of the I2C Bus Accelerator (LTC4311), which was initially included to handle long-distance 2-meter cable capacitance. Testing showed it could be bypassed safely for our final setup.
+* **The Result:** Removing this physical chip eliminated its baseline overhead, reducing our standby and operational current by at least **200 $\mu\text{A}$**.

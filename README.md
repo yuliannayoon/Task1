@@ -29,8 +29,6 @@ xychart-beta
     line [2.5, 8, 18, 30, 72]
 ```
 
-
-
 ## **Sensor Resolution vs Energy Cost per Sample**
 ```mermaid
 xychart-beta
@@ -45,5 +43,35 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 ## 📦 Deliverables
 
 ## Summary of your proposed solution
+## 🔋 System Power Budget & Battery Specification
 
+### 1. Battery & Hardware Baseline
+| Hardware Parameter | Description / Condition | Value | Unit |
+| :--- | :--- | :--- | :--- |
+| **Battery Type** | Lithium Thionyl Chloride (Li-SOCl2) | 3.6 | V |
+| **Nominal Capacity** | Manufacturer Specification | 1200 | mAh |
+| **Effective Usable Capacity** | Available Capacity after Standby Loss | 988.464 | mAh |
+| **System Regulated Voltage** | Output via External Ultra-low DC-DC Buck | 3.3 | V DC |
+| **MCU Power Mode** | nRF52840 Normal Voltage Mode ($V_{DD}=V_{DDH}$) | 3.3 | V |
+
+---
+
+### ⏱️ Duty Cycle & Timing Profiles
+| Operational State | Description | Duration | Unit |
+| :--- | :--- | :--- | :--- |
+| **Measurement Period** | Complete Cycle Interval (5 Minutes) | 300 | seconds |
+| **Active Time ($T_{active}$)** | Includes Wake-up, I2C, Sampling & BLE Tx | 269 | ms |
+| **Sleep Time ($T_{sleep}$)** | Ultra-low Leakage Standby State | 299,731 | ms |
+
+---
+
+### 📊 Power Budget & Lifespan Summary
+| Metric | Calculated Consumption | Unit |
+| :--- | :--- | :--- |
+| **Average Current Consumption** | 11.79 | $\mu\text{A}$ |
+| **Daily Energy Cost** | 0.282 | mAh / day |
+| **Annual Energy Cost** | 102.93 | mAh / year |
+| **Estimated System Longevity** | **9.57** | Years |
+
+> 💡 **Engineering Verdict:** > The system achieves a remarkably low average current of **11.79 $\mu\text{A}$** due to the 5-minute deep sleep duty cycle. With an effective usable battery capacity of **988.464 mAh**, the device is mathematically proven to operate continuously for over **9.5 years**, easily clearing the 1-year target requirement.
 

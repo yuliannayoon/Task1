@@ -75,3 +75,21 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 > 💡 **Engineering Verdict:** > The system achieves a remarkably low average current of **11.79 $\mu\text{A}$** due to the 5-minute deep sleep duty cycle. With an effective usable battery capacity of **988.464 mAh**, the device is mathematically proven to operate continuously for over **9.5 years**, easily clearing the 1-year target requirement.
 
+
+## 🔋 Detailed Energy Consumption Breakdown (Per 1 Cycle)
+
+Below is the structured power breakdown for a single operational cycle ($T_{period} = 300,000\text{ ms}$). 
+* **Battery-Referred Current** is calculated using the voltage conversion factor ($3.3\text{V} / 3.7\text{V} \approx 0.891$) and an assumed Buck converter efficiency ($\eta \approx 98\%$).
+* **Formula:** $\text{Energy Consumption (mAs)} = \text{Battery-Referred Current (mA)} \times \left(\frac{\text{Duration (ms)}}{1000}\right)$
+
+| Operational Phase | Duration (ms) | Active Current (mA) | Battery-Referred Current (mA) | Energy Cost (mAs) |
+| :--- | :---: | :---: | :---: | :---: |
+| **MCU Wake-Up** | 2.50 | 4.80 | 4.368 | 10.921 |
+| **$T_{sensor1}$ (MS5607)** | 18.00 | 6.20 | 5.642 | 112.096 |
+| **$T_{sensor2}$ (BME680)** | 245.00 | 13.80 | 12.567 | 3,381.003 |
+| **$T_{RF}$ (BLE Transmission)**| 4.08 | 8.00 | 7.280 | 32.000 |
+| **Deep Sleep** | 299,730.42 | 0.00 | 0.000 | 0.000 |
+| **Total (1 Cycle)** | **300,000.00** | — | — | **3,536.020** |
+
+---
+

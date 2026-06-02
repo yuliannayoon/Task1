@@ -51,6 +51,10 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
+### 📈 TX Power vs Current Consumption Trend
+
+![Dual Y-axis Line Chart of Current Consumption](./current_chart.png)
+
 
 
 
@@ -58,11 +62,4 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 ## Summary of your proposed solution
 ## 📊 Integrated Sensor Analysis Master Table
 
-| 센서 설정 (Resolution) | 샘플링 주기 (Interval) | 에너지 소모량 (Energy Cost) | 예상 배터리 수명 (Battery Life) |
-| :--- | :--- | :--- | :--- |
-| **OSR 256** | 1s | 0.756 $\mu\text{As}$ | 2.5 Hours |
-| **OSR 512** | 10s | 1.484 $\mu\text{As}$ | 8.0 Hours |
-| **OSR 1024** | 30s | 2.912 $\mu\text{As}$ | 18.0 Hours |
-| **OSR 2048** | 60s | 5.782 $\mu\text{As}$ | 30.0 Hours |
-| **OSR 4096** | 300s | 11.508 $\mu\text{As}$ | **72.0 Hours (최적)** |
 

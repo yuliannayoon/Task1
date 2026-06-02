@@ -52,6 +52,44 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 ## Summary of your proposed solution
 
 
+<svg width="600" height="320" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="320" fill="#0d1117" rx="8"/>
+
+  <line x1="80" y1="20" x2="80" y2="240" stroke="#30363d" stroke-width="1"/>
+  <line x1="80" y1="240" x2="560" y2="240" stroke="#30363d" stroke-width="1"/>
+  <line x1="80" y1="180" x2="560" y2="180" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="80" y1="120" x2="560" y2="120" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="80" y1="60" x2="560" y2="60" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <text x="70" y="244" fill="#58a6ff" font-size="10" text-anchor="end" font-family="monospace">0</text>
+  <text x="70" y="184" fill="#58a6ff" font-size="10" text-anchor="end" font-family="monospace">68</text>
+  <text x="70" y="124" fill="#58a6ff" font-size="10" text-anchor="end" font-family="monospace">136</text>
+  <text x="70" y="64"  fill="#58a6ff" font-size="10" text-anchor="end" font-family="monospace">204</text>
+  <text x="18" y="140" fill="#58a6ff" font-size="10" text-anchor="middle" font-family="monospace" transform="rotate(-90,18,140)">Current (uA)</text>
+
+  <text x="160" y="258" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">-20 dBm</text>
+  <text x="280" y="258" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">-4 dBm</text>
+  <text x="400" y="258" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">0 dBm</text>
+  <text x="520" y="258" fill="#8b949e" font-size="10" text-anchor="middle" font-family="monospace">8 dBm</text>
+  <text x="340" y="285" fill="#8b949e" font-size="11" text-anchor="middle" font-family="monospace">TX Power (dBm)</text>
+
+  <polyline points="160,192 280,149 400,152 520,31" fill="none" stroke="#58a6ff" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <polygon points="160,192 280,149 400,152 520,31 520,240 160,240" fill="#58a6ff" fill-opacity="0.07"/>
+
+  <circle cx="160" cy="192" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="280" cy="149" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="400" cy="152" r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+  <circle cx="520" cy="31"  r="4" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+
+  <text x="160" y="184" fill="#58a6ff" font-size="9" text-anchor="middle" font-family="monospace">54.3uA</text>
+  <text x="280" y="141" fill="#58a6ff" font-size="9" text-anchor="middle" font-family="monospace">103uA</text>
+  <text x="400" y="144" fill="#58a6ff" font-size="9" text-anchor="middle" font-family="monospace">100uA</text>
+  <text x="520" y="23"  fill="#58a6ff" font-size="9" text-anchor="middle" font-family="monospace">238uA</text>
+
+  <text x="320" y="14" fill="#f0f6fc" font-size="12" text-anchor="middle" font-family="monospace" font-weight="bold">TX Power vs Current Consumption</text>
+</svg>
+
+
 
 
 ## Summary of your proposed solution

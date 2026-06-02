@@ -72,11 +72,20 @@ Below is the structured power breakdown for a single operational cycle ($T_{peri
 ---
 
 
-
-
 ## 📦 Deliverables
 
-## Summary of your proposed solution
+## 📝 Summary of your proposed solution
+
+Our proposed architecture delivers an ultra-low-power, long-term monitoring solution for LDAR (Leak Detection and Repair) applications by integrating smart hardware design with aggressive firmware power management. 
+
+### Key Highlights of the Solution:
+* **Decade-Long Battery Life:** By implementing a 5-minute (300s) deep sleep duty cycle and utilizing an external high-efficiency DC-DC Buck converter, the system successfully lowers its average current consumption to just **11.79 $\mu\text{A}$**. This allows the 3.6V Primary Lithium Battery (988.464 mAh effective capacity) to sustain continuous operation for over **9.5 years**, vastly exceeding the standard 1-year operational target.
+* **Optimized Power Conversion:** We took advantage of the nRF52840’s 1.3V internal core threshold by dropping the voltage via a Buck converter instead of an LDO. This structural choice successfully throttled the raw active-mode hardware current from **12.0 mA** down to a battery-referred current of **4.8 mA**.
+* **Zero-Leakage Firmware Strategy:** To eliminate idle power bleeding, the firmware actively disables the $I^2C$ peripheral immediately after sensor data acquisition, saving **500 $\mu\text{A}$** of active run current. Additionally, running the BME680 in **Forced Mode** ensures it returns to deep sleep immediately after sampling.
+* **Streamlined Hardware Footprint:** Through practical validation, we eliminated the LTC4311 I2C Bus Accelerator from the final assembly, cutting out redundant standby overhead and saving an extra **200 $\mu\text{A}$** of current.
+
+> 🛠️ **Conclusion:** The combination of an ultra-low quiescent current power rail ($I_q = 30\text{nA}$), optimized sensor operating profiles, and rigorous peripheral power-gating yields a highly reliable, maintenance-free environmental sensing node tailored for long-term field deployment.
+
 
 ##  Sampling Frequency vs Battery Life 
 ```mermaid
@@ -99,8 +108,6 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 
 ## 🧠 Engineering Notes & Power Optimization Insights
-
-> 💡 **Developer's Note:** The notes below detail our hardware and firmware-level optimizations implemented to cut off structural current leakage and minimize overall power consumption compared to the baseline prototype.
 
 #### 1. Hardware-Level Power Conversion Efficiency
 * **Internal Core Voltage Dynamics:** Even though an external 3.3V power rail is supplied to the system, the internal core operating voltage of the nRF52840 MCU drops down to **1.3V**.

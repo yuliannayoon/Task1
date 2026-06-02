@@ -61,39 +61,6 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 ## Summary of your proposed solution
 
 
-# Task1
-
-## 📦 Deliverables
-### 📄 Schematic Document
-
-Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 Buck Converter, LTC4311 I2C Bus Accelerator, and the BME680 / MS5607 sensor cluster.
-
-> 📂 **[View Full Schematic (PDF)](./TASK1_Sch.pdf)**
-
----
-
-### 📝 Design Decisions & Assumptions (147 words)
-
-The proposed system consists of three primary functional blocks Power Management, Sensor Detection, and the Microprocessor. 
-The system is centered around the nRF52840 chipset, configured in Normal Voltage Mode to supply a uniform 3.3V operating voltage across all onboard sensors. It also leverages the chip's internal USB-to-Serial capability, using the physical PHY circuit to automatically detect PC connections.To maximize efficiency, the power distribution utilizes a high-efficiency DC-DC buck converter with an ultra-low quiescent current ($I_q$) of 30nA. This replaces conventional LDO regulators, eliminating excessive thermal dissipation caused by voltage differentials and output current.The sensor detection block integrates two sensors that share identical default $I^2C$ address options (0x76 and 0x77). To prevent address collision on the same bus, the hardware was configured to allocate unique addresses by tying the SDO pin of the MS5607 to Low (GND) and the CSB pin of the BME680 to High (VCC).To support 400kHz high-speed $I^2C$ communication over a 2-meter cable, an $I^2C$ bus accelerator (rise-time accelerator) was implemented. This actively counters signal distortion caused by increased cable capacitance and guarantees sharp rise times, ensuring robust signal integrity. 
-
----
-
-# Task2
-
-## 🔋 Power Budget and Long-term Viability Analysis
-* **Target Operational Life:** 1 Year (365 Days)
-* **Power Source Specification:** 3.6V 1200mAh Lithium Primary Battery
-* **Theoretical Daily Energy Budget:** 3.29 mAh / day (Equivalent to a continuous 137 µA average current)
-* **Practical Daily Energy Budget (20% Design Margin):** 2.63 mAh / day (Equivalent to a continuous 110 µA average current)
-
-### 📈 Sampling Frequency vs Battery Life 
-```mermaid
-xychart-beta
-    title "Sampling Frequency vs Battery Life"
-    x-axis ["1s", "10s", "30s", "60s", "300s"]
-    y-axis "Battery Life (h)" 0 --> 80
-    line [2.5, 8, 18, 30, 72]
 
 
 

@@ -18,8 +18,8 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 ## System Block Diogram
 
-> 📂 **[View Full Schematic (PDF)](./TASK1_Sch.pdf)**
-
+> 📂 **[View Full Schematic (PDF)](./SYSTETM LAYOUT.pdf)**
+SYSTETM LAYOUT.pdf
 * ##
 
 

@@ -60,11 +60,9 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 
 ## Summary of your proposed solution
 
-xychart-beta
-    title "Wireless Range vs Power Budget"
+title "Wireless Range vs Power Budget"
     x-axis ["-20dBm", "-4dBm", "0dBm", "8dBm"]
     y-axis "Battery Life (Days)" 0 --> 800
     line [737, 388, 400, 168]
-
 
 

@@ -132,3 +132,20 @@ xychart-beta
     x-axis ["10s", "30s", "60s", "78s (Limit)", "120s", "180s", "300s (Ours)"]
     y-axis "Battery Life (Years)" 0 --> 11
     line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
+
+---
+
+xychart-beta
+    title "Energy Consumption Breakdown per Phase (mAs)"
+    x-axis ["MCU Wake", "MS5607", "BME680 (Heating)", "BLE Tx"]
+    y-axis "Energy (mAs)" 0 --> 3500
+    bar [10.92, 112.10, 3381.00, 32.00]
+
+
+---
+
+xychart-beta
+    title "BLE TX Output Power vs. Energy Share per Cycle (%)"
+    x-axis ["-20dBm", "-16dBm", "-12dBm", "-8dBm", "-4dBm", "0dBm", "+4dBm", "+8dBm"]
+    y-axis "Energy Share (%)" 0 --> 1.2
+    bar [0.11, 0.15, 0.20, 0.27, 0.38, 0.52, 0.70, 0.90]

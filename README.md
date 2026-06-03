@@ -116,3 +116,58 @@ Lowering the resolution minimizes energy consumption to a near-negligible level,
 * **BME680 Forced Mode Operation:** To avoid constant power drain, the BME680 environmental sensor is configured to run in **Forced Mode**. The sensor wakes up, triggers the gas heater core, captures a single sample, and immediately returns to a deep sleep state.
 * **Bus Accelerator Trimming:** We re-evaluated the necessity of the I2C Bus Accelerator (LTC4311), which was initially included to handle long-distance 2-meter cable capacitance. Testing showed it could be bypassed safely for our final setup.
 * **The Result:** Removing this physical chip eliminated its baseline overhead, reducing our standby and operational current by at least **200 $\mu\text{A}$**.
+
+
+# Task1
+
+## 📦 Deliverables
+### 📄 Schematic Document
+
+Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 Buck Converter, LTC4311 I2C Bus Accelerator, and the BME680 / MS5607 sensor cluster.
+
+> 📂 **[View Full Schematic (PDF)](./SYSTEM_LAYOUT.PDF)**
+
+---
+
+### 📝 Design Decisions & Assumptions (147 words)
+
+The proposed system consists of three primary functional blocks: **Power Management**, **Sensor Detection**, and the **Microprocessor**.
+
+The system is centered around the **nRF52840** chipset, configured in *Normal Voltage Mode* to supply a uniform 3.3V operating voltage across all onboard sensors. It also leverages the chip's internal USB-to-Serial capability, using the physical PHY circuit to automatically detect PC connections.
+
+To maximize efficiency, the power distribution utilizes a high-efficiency **DC-DC buck converter** with an ultra-low quiescent current ($I_q$) of **30nA**. This replaces conventional LDO regulators, eliminating excessive thermal dissipation caused by voltage differentials and output current.
+
+The sensor detection block integrates two sensors that share identical default $I^2C$ address options (0x76 and 0x77). To prevent address collision on the same bus, the hardware was configured to allocate unique addresses by tying the **SDO pin of the MS5607 to Low (GND)** and the **CSB pin of the BME680 to High (VCC)**.
+
+To support 400kHz high-speed $I^2C$ communication over a 2-meter cable, an **$I^2C$ bus accelerator** (rise-time accelerator) was implemented. This actively counters signal distortion caused by increased cable capacitance and guarantees sharp rise times, ensuring robust signal integrity. 
+
+---
+
+# Task2
+
+## 🏗️ System Block Diagram
+
+> 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM%20LAYOUT.pdf)**
+
+```text
+[Power Layer]   3.6V Primary Lithium Battery (1200mAh / 988.464mAh Usable)
+                         ⬇️ (Main Power Input Line)
+                TPS62840 DC-DC Buck Converter (Ultra-low Iq = 30 nA)
+                         ⬇️
+                3.3V System Power Rail (Low-ESR Decoupling Reservoir)
+                         │
+         ┌───────────────┼───────────────┐
+         ▼ (3.3V)        ▼ (3.3V)        ▼ (3.3V)
+
+[Data Layer]    [MS5607 Barometric]   [BME680 Environmental]
+                OSR 1024 Resolution   Gas Heater Core Activated
+                         │                       │
+                         └───────┬───────────────┘
+                                 ▼ (I2C Bus Acceleration)
+                        LTC4311 Bus Accelerator (Removes Cable Capacitance)
+                                 │
+                                 ▼ (Sharpened I2C Signals)
+                        nRF52840 MCU (Normal Voltage Mode Baseline)
+                                 │
+                                 ▼ (0 dBm Balanced RF Output)
+                        BLE Antenna Block (Transmits to Gateway)

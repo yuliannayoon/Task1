@@ -130,7 +130,7 @@ xychart-beta
     line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
 
 ### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-
+```mermaid
 xychart-beta
     title "Energy Consumption Breakdown per Phase (mAs)"
     x-axis ["MCU Wake", "MS5607", "BME680", "BLE Tx"]

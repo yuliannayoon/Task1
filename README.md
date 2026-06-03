@@ -16,6 +16,8 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 # Task2
 
+## 📦 Deliverables
+
 ## 🏗️ System Block Diagram
 
 > 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM%20LAYOUT.pdf)**
@@ -65,12 +67,6 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 ---
 
-## 📦 Deliverables
-
-## 📝 Summary 
-
-
-
 
 ##  Sampling Frequency vs Battery Life 
 ```mermaid
@@ -90,6 +86,7 @@ xychart-beta
     bar [0.756, 1.484, 2.912, 5.782, 11.508]
 ```
 
+## 📝 Alternative
 
 
 

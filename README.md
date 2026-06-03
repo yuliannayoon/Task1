@@ -20,30 +20,6 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 > 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM%20LAYOUT.pdf)**
 
-
-```text
-[Power Layer]   3.6V Primary Lithium Battery (1200mAh / 988.464mAh Usable)
-                         ⬇️ (Main Power Input Line)
-                TPS62840 DC-DC Buck Converter (Ultra-low Iq = 30 nA)
-                         ⬇️
-                3.3V System Power Rail (Low-ESR Decoupling Reservoir)
-                         │
-         ┌───────────────┼───────────────┐
-         ▼ (3.3V)        ▼ (3.3V)        ▼ (3.3V)
-
-[Data Layer]    [MS5607 Barometric]   [BME680 Environmental]
-                OSR 1024 Resolution   Gas Heater Core Activated
-                         │                       │
-                         └───────┬───────────────┘
-                                 ▼ (I2C Bus Acceleration)
-                        LTC4311 Bus Accelerator (Removes Cable Capacitance)
-                                 │
-                                 ▼ (Sharpened I2C Signals)
-                        nRF52840 MCU (Normal Voltage Mode Baseline)
-                                 │
-                                 ▼ (0 dBm Balanced RF Output)
-                        BLE Antenna Block (Transmits to Gateway)
-
 ## 🔋 System Power Budget & Battery Specification
 
 ### 1. Battery & Hardware Baseline

@@ -55,10 +55,6 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 ## 🔋 Detailed Energy Consumption Breakdown (Per 1 Cycle)
 
-Below is the structured power breakdown for a single operational cycle ($T_{period} = 300,000\text{ ms}$). 
-* **Battery-Referred Current** is calculated using the voltage conversion factor ($3.3\text{V} / 3.7\text{V} \approx 0.891$) and an assumed Buck converter efficiency ($\eta \approx 98\%$).
-* **Formula:** $\text{Energy Consumption (mAs)} = \text{Battery-Referred Current (mA)} \times \left(\frac{\text{Duration (ms)}}{1000}\right)$
-
 | Operational Phase | Duration (ms) | Active Current (mA) | Battery-Referred Current (mA) | Energy Cost (mAs) |
 | :--- | :---: | :---: | :---: | :---: |
 | **MCU Wake-Up** | 2.50 | 4.80 | 4.368 | 10.921 |

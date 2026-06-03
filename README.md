@@ -112,7 +112,6 @@ xychart-beta
 # ⚖️ Engineering Trade-Off Analysis
 > **Hardware & energy constraint optimization — three key trade-offs**
 
-본 시스템 설계 과정에서 직면한 하드웨어 및 에너지 제약 조건을 해결하기 위해 다음 **3가지 핵심 트레이드오프**를 정량적 데이터 플롯을 통해 정의하고 최적화를 수행했습니다.
 
 ---
 

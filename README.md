@@ -136,3 +136,11 @@ xychart-beta
     y-axis "Energy (mAs)" 0 --> 3500
     bar [10.92, 112.10, 3381.00, 32.00]
 ```
+
+```mermaid
+xychart-beta
+    title "BLE TX Output Power vs. Energy Share per Cycle (%)"
+    x-axis ["-20dBm", "-16dBm", "-12dBm", "-8dBm", "-4dBm", "0dBm", "+4dBm", "+8dBm"]
+    y-axis "Energy Share (%)" 0 --> 1.2
+    bar [0.11, 0.15, 0.20, 0.27, 0.38, 0.52, 0.70, 0.90]
+```

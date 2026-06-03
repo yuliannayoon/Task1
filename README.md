@@ -68,7 +68,7 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 ## 📦 Deliverables
 
-## 📝 Summary of your proposed solution
+## 📝 Summary 
 
 
 ### Note:

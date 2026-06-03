@@ -144,34 +144,4 @@ xychart-beta
     y-axis "Energy Share (%)" 0 --> 1.2
     bar [0.11, 0.15, 0.20, 0.27, 0.38, 0.52, 0.70, 0.90]
 ```
-# ⚖️ Engineering Trade-Off Analysis
-> **Hardware & energy constraint optimization — three key trade-offs**
-
----
-
-### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-
-
-* **Our Selected Configuration (5 minute cycle):** 300 s ($\approx 9.57\text{ Years}$)
-
-![Sampling Interval vs Battery Lifespan](./TRAD1.png)
-
----
-
-### 📊 Trade-off 2: Energy Consumption Breakdown per Measurement Cycle
-
-
-* **MCU Wake-up Phase:** $10.92\text{ mAs}$ ($0.31\%$)
-* **MS5607 Pressure & Temp Sampling:** $112.10\text{ mAs}$ ($3.17\%$)
-* **BME680 Gas Detection (Heating + Measurement):** $3,381.00\text{ mAs}$ ($95.62\%$)
-* **BLE RF Transmission (TX Mode):** $32.00\text{ mAs}$ ($0.90\%$)
-
-![Energy Consumption Breakdown](./TRAD2.png)
-
----
-
-### 📊 Trade-off 3: BLE TX Output Power vs. Energy Share per Cycle
-
-![BLE TX Output Power vs Energy Share](./TRAD3.png)
----
 

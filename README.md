@@ -9,7 +9,7 @@ Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 B
 
 ---
 
-### 📝 Design Decisions & Assumptions (147 words)
+### 📝 Design Decisions & Assumptions 
 
 The proposed system consists of three primary functional blocks Power Management, Sensor Detection, and the Microprocessor. 
 The system is centered around the nRF52840 chipset, configured in Normal Voltage Mode to supply a uniform 3.3V operating voltage across all onboard sensors. It also leverages the chip's internal USB-to-Serial capability, using the physical PHY circuit to automatically detect PC connections.To maximize efficiency, the power distribution utilizes a high-efficiency DC-DC buck converter with an ultra-low quiescent current ($I_q$) of 60nA. This replaces conventional LDO regulators, eliminating excessive thermal dissipation caused by voltage differentials and output current.The sensor detection block integrates two sensors that share identical default $I^2C$ address options (0x76 and 0x77). To prevent address collision on the same bus, the hardware was configured to allocate unique addresses by tying the SDO pin of the MS5607 to Low (GND) and the CSB pin of the BME680 to High (VCC).To support 400kHz high-speed $I^2C$ communication over a 2-meter cable, an $I^2C$ bus accelerator (rise-time accelerator) was implemented. This actively counters signal distortion caused by increased cable capacitance and guarantees sharp rise times, ensuring robust signal integrity. 
@@ -171,3 +171,5 @@ The peak current consumption increases proportionally as the wireless transmissi
 
 ![BLE TX Output Power vs Energy Share](./TRAD3.png)
 ---
+
+### 📝 Design Decisions & Assumptions 

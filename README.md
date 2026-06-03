@@ -147,13 +147,6 @@ xychart-beta
 
 ---
 
-### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-측정 주기가 길어질수록 배터리 수명은 기하급수적으로 증가합니다. 본 설계의 최적화된 프로필은 300초(5분) 주기로 세팅되어 데이터의 최신성을 유지함과 동시에 다년간의 필드 신뢰성을 보장합니다.
-
-* **Minimum Viable Limit (1년 수명 만족을 위한 최소 한계점):** 78 s ($\approx 2.50\text{ Years}$)
-* **Our Selected Configuration (최적화된 5분 주기 설계):** 300 s ($\approx 9.57\text{ Years}$)
-
-![Sampling Interval vs Battery Lifespan](./TRAD1.png)
 
 ---
 

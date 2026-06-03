@@ -129,7 +129,7 @@ xychart-beta
     y-axis "Battery Life (Years)" 0 --> 11
     line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
 
-
+### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
 
 
 

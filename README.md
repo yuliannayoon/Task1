@@ -18,6 +18,9 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 
 ## 📦 Deliverables
 
+### 📝 Design Decisions & Assumptions 
+
+
 ## 🏗️ System Block Diagram
 
 > 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM%20LAYOUT.pdf)**
@@ -171,4 +174,3 @@ xychart-beta
 ![BLE TX Output Power vs Energy Share](./TRAD3.png)
 ---
 
-### 📝 Design Decisions & Assumptions 

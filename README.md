@@ -50,7 +50,6 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 | **Annual Energy Cost** | 102.93 | mAh / year |
 | **Estimated System Longevity** | **9.57** | Years |
 
-> 💡 **Engineering Verdict:** > The system achieves a remarkably low average current of **11.79 $\mu\text{A}$** due to the 5-minute deep sleep duty cycle. With an effective usable battery capacity of **988.464 mAh**, the device is mathematically proven to operate continuously for over **9.5 years**, easily clearing the 1-year target requirement.
 
 
 ## 🔋 Detailed Energy Consumption Breakdown (Per 1 Cycle)

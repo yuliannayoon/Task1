@@ -144,4 +144,8 @@ xychart-beta
     y-axis "Energy Share (%)" 0 --> 1.2
     bar [0.11, 0.15, 0.20, 0.27, 0.38, 0.52, 0.70, 0.90]
 ```
+## 📂 Supplementary Materials & Calculation Sheets
+> **Below are the primary reference materials and quantitative data sheets used for this case study. Click each link to navigate directly to the file.**
 
+* 📊 [Case Study Material Calculation (Excel File)](./Case_Study_Material_Calculation.xlsx) — Original simulation sheets and formulas for sleep/active mode current transitions and battery lifespan predictions.
+* 📄 [Reference Material (PDF File)](./material.pdf) — Technical specifications, component benchmarking data, and hardware datasheet backups.

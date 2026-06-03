@@ -86,6 +86,14 @@ xychart-beta
     line [2.5, 8, 18, 30, 72]
 ```
 
+xychart-beta
+    title "Sampling Frequency vs Battery Life"
+    x-axis ["1s", "10s", "30s", "60s", "300s"]
+    y-axis "Battery Life (Relative Scale)" 0 --> 80
+    line [2.5, 8.0, 18.0, 30.0, 72.0]
+
+
+
 ## **Sensor Resolution vs Energy Cost per Sample**
 ```mermaid
 xychart-beta

@@ -1,4 +1,4 @@
-# Task1
+# Case Study
 
 ## 📦 Deliverables
 ### 📄 Schematic Document

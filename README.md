@@ -116,10 +116,6 @@ xychart-beta
 ---
 
 ### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-측정 주기가 길어질수록 배터리 수명은 기하급수적으로 증가합니다. 본 설계의 최적화된 프로필은 300초(5분) 주기로 세팅되어 데이터의 최신성을 유지함과 동시에 다년간의 필드 신뢰성을 보장합니다.
-
-* **Minimum Viable Limit (1년 수명 타깃을 만족하기 위한 최소 물리적 한계점):** 78 s ($\approx 2.50\text{ Years}$)
-* **Our Selected Configuration (최적화된 5분 주기 설계 안):** 300 s ($\approx 9.57\text{ Years}$)
 
 ```mermaid
 xychart-beta
@@ -128,6 +124,7 @@ xychart-beta
     y-axis "Battery Life (Years)" 0 --> 11
     line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
 ```
+### 📊 Trade-off 2: Energy Consumption Breakdown per Phase
 ```mermaid
 xychart-beta
     title "Energy Consumption Breakdown per Phase (mAs)"
@@ -135,7 +132,7 @@ xychart-beta
     y-axis "Energy (mAs)" 0 --> 3500
     bar [10.92, 112.10, 3381.00, 32.00]
 ```
-
+### 📊 Trade-off 3: BLE TX POWER vs. Energy share per Cycle (%)
 ```mermaid
 xychart-beta
     title "BLE TX Output Power vs. Energy Share per Cycle (%)"

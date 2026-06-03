@@ -98,17 +98,12 @@ xychart-beta
 ## 📝 Alternative: Battery Downsizing Option
 
 
-#### Technical Specifications & Cross-Vendor Comparison
-| Parameter | Current Battery (Saft LS14250) | Alternative Battery (ER10280) | Engineering Impact / Evaluation |
-| :--- | :---: | :---: | :--- |
-| **Form Factor** | 1/2 AA Size | **1/3 AAA Size** | Drastic enclosure volume and product footprint reduction |
-| **Nominal Voltage** | 3.6 V | **3.6 V** | Identical Chemistry (Li-SOCl2); **Zero hardware or power stage redesign** |
-| **Nominal Capacity** | 1200 mAh | **400 ~ 450 mAh** | Downsized capacity, but remains highly sufficient for the target specification |
-| **Max Continuous Current**| 25 mA | **10 mA** | Safely above our ultra-low average load of $0.01179 \text{ mA}$ ($11.79\ \mu\text{A}$) |
-| **Max Pulse Current** | 100 mA | **40 ~ 50 mA** | **Safely covers our $32.8 \text{ mA}$ peak transient pulse demand** |
+### 🛡️ Key Metrics & Hardware Margins (LS14250 vs. ER10280)
+| Metric | Target / Limit | Current Design **(Saft LS14250)** | Alternative Design **(ER10280)** | Status & Comparison |
+| :--- | :---: | :---: | :---: | :--- |
+| **System Lifespan** | $\ge 1.0 \text{ Year}$ | **$9.57 \text{ Years}$**<br>($9.5\times$ Margin) | **$\approx 3.5 \text{ Years}$**<br>($3.5\times$ Margin) | ⭐ **Both Overachieved**<br>· LS14250: Extreme longevity<br>· ER10280: Optimized footprint |
+| **Continuous Discharge** | Saft: $25.0 \text{ mA}$<br>ER: $10.0 \text{ mA}$ | **$0.01179 \text{ mA}$**<br>($2,120\times$ Margin) | **$0.01179 \text{ mA}$**<br>($848\times$ Margin) | ✅ **Ultra Safe**<br>Both remain orders of magnitude below the physical continuous limits. |
+| **Peak Pulse Current** | Saft: $100.0 \text{ mA}$<br>ER: $40 \sim 50 \text{ mA}$ | **$32.80 \text{ mA}$**<br>($3.0\times$ Margin) | **$32.80 \text{ mA}$**<br>($\ge 1.2\times$ Margin) | ✅ **Within Limit**<br>ER10280 tightly but safely accommodates the transient load. |
+| **Annual Energy Budget** | Available Cap:<br>· Saft: $988.46 \text{ mAh}$<br>· ER: $\approx 360 \text{ mAh}$* | **$103.28 \text{ mAh / year}$**<br>($89.5\%$ Buffer) | **$103.28 \text{ mAh / year}$**<br>($\approx 71.3\%$ Buffer) | ✅ **Optimized**<br>Calculated annual consumption ($103.28\text{ mAh}$) remains unchanged. |
 
-#### Operational Lifespan & Margin Analysis
-* **Annual Energy Consumption:** $103.28 \text{ mAh / year}$ (Unchanged)
-* **Post-Year 1 Remaining Capacity:** Roughly **60% to 70%** of the alternative battery's total capacity will remain intact (accounting for standby leakage and efficiency buffers).
-* **Estimated System Longevity:** Scales down from 9.57 years to **approximately 3.5 Years**. This alternative solution effortlessly clears the initial 1-year operational milestone while delivering a highly optimized, market-ready product form-factor.
-
+> `*` Note: ER10280 Available Capacity ($\approx 360\text{ mAh}$) is estimated assuming a 15% safety/chemical margin from its nominal $425\text{ mAh}$ profile.

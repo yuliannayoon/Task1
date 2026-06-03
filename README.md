@@ -129,12 +129,7 @@ xychart-beta
     y-axis "Battery Life (Years)" 0 --> 11
     line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
 
-```mermaid
-xychart-beta
-    title "Energy Consumption Breakdown per Phase (mAs)"
-    x-axis ["MCU Wake", "MS5607", "BME680", "BLE Tx"]
-    y-axis "Energy (mAs)" 0 --> 3500
-    bar [10.92, 112.10, 3381.00, 32.00]
+
 
 
 

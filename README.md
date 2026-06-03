@@ -95,8 +95,24 @@ xychart-beta
     bar [0.756, 1.484, 2.912, 5.782, 11.508]
 ```
 
-## 📝 Alternative
+## 📝 Alternative: Battery Downsizing Option
 
+### 🔋 Option 1: ER10280 (1/3 AAA Size) — [Highly Recommended]
+To optimize the physical footprint, device enclosure, and overall BOM cost, downsizing the battery from the current ER14250 (1/2 AA) to the ultra-compact **ER10280 (1/3 AAA)** is proposed as a highly viable commercial alternative.
+
+#### Technical Specifications & Comparison
+| Parameter | Current Battery (ER14250) | Alternative Battery (ER10280) | Engineering Impact |
+| :--- | :---: | :---: | :--- |
+| **Form Factor** | 1/2 AA Size | **1/3 AAA Size** | Drastic enclosure volume reduction |
+| **Nominal Voltage** | 3.6 V | **3.6 V** | Identical Chemistry (Li-SOCl2); **Zero hardware redesign** |
+| **Nominal Capacity** | 1200 mAh | **400 ~ 450 mAh** | Downsized capacity but still over-specced |
+| **Max Continuous Current**| 25 mA | **10 mA** | Safely above our $0.01179 \text{ mA}$ average load |
+| **Max Pulse Current** | 50 ~ 100 mA | **40 ~ 50 mA** | **Safely covers our $32.8 \text{ mA}$ peak pulse demand** |
+
+#### Operational Lifespan & Margin Analysis
+* **Annual Energy Consumption:** $103.28 \text{ mAh / year}$ (Unchanged)
+* **Post-Year 1 Remaining Capacity:** Roughly **60% to 70%** of the battery capacity will remain intact (accounting for standby leakage and efficiency buffers).
+* **Estimated System Longevity:** Scales down from 9.57 years to **approximately 3.5 Years**, which still effortlessly clears the initial 1-year operational milestone while delivering a minimized product form-factor.
 
 
 

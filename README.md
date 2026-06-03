@@ -96,7 +96,7 @@ xychart-beta
     bar [0.756, 1.484, 2.912, 5.782, 11.508]
 ```
 
-## 📝 Alternative: Battery Downsizing Option
+## 📝 Alternative: Battery Option
 
 
 ### 🛡️ Key Metrics & Hardware Margins (LS14250 vs. ER10280)

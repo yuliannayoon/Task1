@@ -167,7 +167,6 @@ xychart-beta
 ---
 
 ### 📊 Trade-off 3: BLE TX Output Power vs. Energy Share per Cycle
-The peak current consumption increases proportionally as the wireless transmission power level rises."To transmit data further and more reliably through the antenna, the radio frequency (RF) output power must be increased (e.g., from $-20\text{ dBm}$ to $+8\text{ dBm}$). Consequently, raising the output power naturally escalates the instantaneous maximum current (peak current) consumed by the antenna and the Bluetooth Low Energy (BLE) chipset at that specific moment
 
 ![BLE TX Output Power vs Energy Share](./TRAD3.png)
 ---

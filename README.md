@@ -148,8 +148,7 @@ xychart-beta
 ### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
 
 
-* **Minimum Viable Limit (1년 수명 만족을 위한 최소 한계점):** 78 s ($\approx 2.50\text{ Years}$)
-* **Our Selected Configuration (최적화된 5분 주기 설계):** 300 s ($\approx 9.57\text{ Years}$)
+* **Our Selected Configuration (5 minute cycle):** 300 s ($\approx 9.57\text{ Years}$)
 
 ![Sampling Interval vs Battery Lifespan](./TRAD1.png)
 
@@ -168,7 +167,7 @@ xychart-beta
 ---
 
 ### 📊 Trade-off 3: BLE TX Output Power vs. Energy Share per Cycle
-무선 송신 출력 레벨이 올라갈수록 피크 소모 전류는 비례하여 상승합니다. 그러나 통신 무선 패킷 구조를 최적화하고 무선 활성화 버스트 윈도우(Burst Window)를 **4.08 ms**로 극단적으로 짧고 고정되게 통제함으로써, 송신 출력을 최대로 높이더라도 전체 5분 주기 내에서 RF 링크가 차지하는 전력 점유율은 **모든 출력 레벨에서 1% 미만**으로 억제됩니다.
+The peak current consumption increases proportionally as the wireless transmission power level rises."To transmit data further and more reliably through the antenna, the radio frequency (RF) output power must be increased (e.g., from $-20\text{ dBm}$ to $+8\text{ dBm}$). Consequently, raising the output power naturally escalates the instantaneous maximum current (peak current) consumed by the antenna and the Bluetooth Low Energy (BLE) chipset at that specific moment
 
 | BLE TX Output Power | Peak Current Effect | Total Energy Share (%) per 5-min Cycle | Burst Duration Status |
 | :---: | :---: | :---: | :---: |

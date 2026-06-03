@@ -98,7 +98,7 @@ xychart-beta
 ## 📝 Alternative: Battery Downsizing Option
 
 ### 🔋 Option 1: ER10280 (1/3 AAA Size) 
-To optimize the physical footprint, device enclosure, and overall BOM cost, downsizing the battery from the current ER14250 (1/2 AA) to the ultra-compact **ER10280 (1/3 AAA)** is proposed as a highly viable commercial alternative.
+ **ER10280 (1/3 AAA)** 
 
 #### Technical Specifications & Comparison
 | Parameter | Current Battery (ER14250) | Alternative Battery (ER10280) | Engineering Impact |

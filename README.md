@@ -109,31 +109,4 @@ xychart-beta
 
 > `*` Note: ER10280 Available Capacity ($\approx 360\text{ mAh}$) is estimated assuming a 15% safety/chemical margin from its nominal $425\text{ mAh}$ profile.
 
-# ⚖️ Engineering Trade-Off Analysis
-> **Hardware & energy constraint optimization — three key trade-offs**
-
-본 시스템 설계 과정에서 직면한 하드웨어 및 에너지 제약 조건을 해결하기 위해 다음 **3가지 핵심 트레이드오프**를 정량적 데이터 플롯을 통해 정의하고 최적화를 수행했습니다.
-
----
-
-### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-측정 주기가 길어질수록 배터리 수명은 기하급수적으로 증가합니다. 본 설계의 최적화된 프로필은 300초(5분) 주기로 세팅되어 데이터의 최신성을 유지함과 동시에 다년간의 필드 신뢰성을 보장합니다.
-
-* **Minimum Viable Limit (1년 수명 타깃을 만족하기 위한 최소 물리적 한계점):** 78 s ($\approx 2.50\text{ Years}$)
-* **Our Selected Configuration (최적화된 5분 주기 설계 안):** 300 s ($\approx 9.57\text{ Years}$)
-
-```mermaid
-xychart-beta
-    title "Sampling Interval vs. Battery Lifespan (Years)"
-    x-axis ["10s", "30s", "60s", "78s", "120s", "180s", "300s"]
-    y-axis "Battery Life (Years)" 0 --> 11
-    line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
-
-### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-```mermaid
-xychart-beta
-    title "Energy Consumption Breakdown per Phase (mAs)"
-    x-axis ["MCU Wake", "MS5607", "BME680", "BLE Tx"]
-    y-axis "Energy (mAs)" 0 --> 3500
-    bar [10.92, 112.10, 3381.00, 32.00]
 

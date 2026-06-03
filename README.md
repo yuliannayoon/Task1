@@ -169,16 +169,5 @@ xychart-beta
 ### 📊 Trade-off 3: BLE TX Output Power vs. Energy Share per Cycle
 The peak current consumption increases proportionally as the wireless transmission power level rises."To transmit data further and more reliably through the antenna, the radio frequency (RF) output power must be increased (e.g., from $-20\text{ dBm}$ to $+8\text{ dBm}$). Consequently, raising the output power naturally escalates the instantaneous maximum current (peak current) consumed by the antenna and the Bluetooth Low Energy (BLE) chipset at that specific moment
 
-| BLE TX Output Power | Peak Current Effect | Total Energy Share (%) per 5-min Cycle | Burst Duration Status |
-| :---: | :---: | :---: | :---: |
-| **-20 dBm** | Ultra-low Current | **0.11%** | 4.08 ms (Fixed) |
-| **-16 dBm** | Very Low Current | **0.15%** | 4.08 ms (Fixed) |
-| **-12 dBm** | Low Current | **0.20%** | 4.08 ms (Fixed) |
-| **-8 dBm** | Moderated Current | **0.27%** | 4.08 ms (Fixed) |
-| **-4 dBm** | Standard Current | **0.38%** | 4.08 ms (Fixed) |
-| **0 dBm** | High Current | **0.52%** | 4.08 ms (Fixed) |
-| **+4 dBm** | Intense Current | **0.70%** | 4.08 ms (Fixed) |
-| **+8 dBm** | Maximum Range Current | **0.90%** | 4.08 ms (Fixed) |
-
 ![BLE TX Output Power vs Energy Share](./TRAD3.png)
 ---

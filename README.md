@@ -140,7 +140,50 @@ xychart-beta
     y-axis "Energy Share (%)" 0 --> 1.2
     bar [0.11, 0.15, 0.20, 0.27, 0.38, 0.52, 0.70, 0.90]
 ```
+# ⚖️ Engineering Trade-Off Analysis
+> **Hardware & energy constraint optimization — three key trade-offs**
 
+본 시스템 설계 과정에서 직면한 하드웨어 및 에너지 제약 조건을 해결하기 위해 다음 **3가지 핵심 트레이드오프**를 정량적 데이터 분석을 통해 정의하고 최적화를 수행했습니다.
+
+---
+
+### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
+측정 주기가 길어질수록 배터리 수명은 기하급수적으로 증가합니다. 본 설계의 최적화된 프로필은 300초(5분) 주기로 세팅되어 데이터의 최신성을 유지함과 동시에 다년간의 필드 신뢰성을 보장합니다.
+
+* **Minimum Viable Limit (1년 수명 만족을 위한 최소 한계점):** 78 s ($\approx 2.50\text{ Years}$)
+* **Our Selected Configuration (최적화된 5분 주기 설계):** 300 s ($\approx 9.57\text{ Years}$)
+
+![Sampling Interval vs Battery Lifespan](./TRAD1.png)
+
+---
+
+### 📊 Trade-off 2: Energy Consumption Breakdown per Measurement Cycle
+가스 센서(BME680) 내부의 내장 가열 소자(정격 가열 시간 150 ms) 구동 전력이 전체 전력 예산(Power Budget)을 절대적으로 지배합니다. 반면 MCU 웨이크업 단계 및 BLE RF 전송 페이즈가 차지하는 오버헤드는 극히 미미합니다.
+
+* **MCU Wake-up Phase:** $10.92\text{ mAs}$ ($0.31\%$)
+* **MS5607 Pressure & Temp Sampling:** $112.10\text{ mAs}$ ($3.17\%$)
+* **BME680 Gas Detection (Heating + Measurement):** $3,381.00\text{ mAs}$ ($95.62\%$)
+* **BLE RF Transmission (TX Mode):** $32.00\text{ mAs}$ ($0.90\%$)
+
+![Energy Consumption Breakdown](./TRAD2.png)
+
+---
+
+### 📊 Trade-off 3: BLE TX Output Power vs. Energy Share per Cycle
+무선 송신 출력 레벨이 올라갈수록 피크 소모 전류는 비례하여 상승합니다. 그러나 통신 무선 패킷 구조를 최적화하고 무선 활성화 버스트 윈도우(Burst Window)를 **4.08 ms**로 극단적으로 짧고 고정되게 통제함으로써, 송신 출력을 최대로 높이더라도 전체 5분 주기 내에서 RF 링크가 차지하는 전력 점유율은 **모든 출력 레벨에서 1% 미만**으로 억제됩니다.
+
+| BLE TX Output Power | Peak Current Effect | Total Energy Share (%) per 5-min Cycle | Burst Duration Status |
+| :---: | :---: | :---: | :---: |
+| **-20 dBm** | Ultra-low Current | **0.11%** | 4.08 ms (Fixed) |
+| **-16 dBm** | Very Low Current | **0.15%** | 4.08 ms (Fixed) |
+| **-12 dBm** | Low Current | **0.20%** | 4.08 ms (Fixed) |
+| **-8 dBm** | Moderated Current | **0.27%** | 4.08 ms (Fixed) |
+| **-4 dBm** | Standard Current | **0.38%** | 4.08 ms (Fixed) |
+| **0 dBm** | High Current | **0.52%** | 4.08 ms (Fixed) |
+| **+4 dBm** | Intense Current | **0.70%** | 4.08 ms (Fixed) |
+| **+8 dBm** | Maximum Range Current | **0.90%** | 4.08 ms (Fixed) |
+
+![BLE TX Output Power vs Energy Share](./TRAD3.png)
 
 
 

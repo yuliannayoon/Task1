@@ -131,5 +131,9 @@ xychart-beta
 
 ### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
 
-
+xychart-beta
+    title "Energy Consumption Breakdown per Phase (mAs)"
+    x-axis ["MCU Wake", "MS5607", "BME680", "BLE Tx"]
+    y-axis "Energy (mAs)" 0 --> 3500
+    bar [10.92, 112.10, 3381.00, 32.00]
 

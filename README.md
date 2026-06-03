@@ -100,22 +100,5 @@ xychart-beta
 Lowering the resolution minimizes energy consumption to a near-negligible level, but it inevitably degrades the sensor's detection performance. On the other hand, maximizing the resolution pushes the energy cost up to approximately 15 times that of the OSR 256 baseline. Therefore, looking at the data, OSR 1024 can be considered the most viable option as it provides the ideal balance between energy cost and precision.
 
 
-## 🧠 Engineering Notes & Power Optimization Insights
-
-#### 1. Hardware-Level Power Conversion Efficiency
-* **Internal Core Voltage Dynamics:** Even though an external 3.3V power rail is supplied to the system, the internal core operating voltage of the nRF52840 MCU drops down to **1.3V**.
-* **LDO vs. Buck Converter:** Instead of a conventional LDO regulator, which wastes energy through heat, we integrated a **high-efficiency DC-DC Buck Converter** into the power management layer.
-* **The Result:** This structural change reduced the active mode hardware current from its raw **12.0 mA** baseline down to an equivalent **4.8 mA** on the battery side, saving over 60% of active power.
-
-#### 2. Firmware-Driven I2C Peripheral Management
-* **Active Run Current Bleeding:** Leaving the I2C communication peripheral enabled or in an idle state after data collection causes continuous, unnecessary current leakage.
-* **Aggressive Cut-off Strategy:** We optimized the firmware sequence to **completely disable and power down the I2C module** immediately after receiving the sensor samples.
-* **The Result:** This simple software interface adjustment successfully saved **500 $\mu\text{A}$** of active run current that would otherwise be wasted.
-
-#### 3. Sensor Profile Optimization & Bus Trimming
-* **BME680 Forced Mode Operation:** To avoid constant power drain, the BME680 environmental sensor is configured to run in **Forced Mode**. The sensor wakes up, triggers the gas heater core, captures a single sample, and immediately returns to a deep sleep state.
-* **Bus Accelerator Trimming:** We re-evaluated the necessity of the I2C Bus Accelerator (LTC4311), which was initially included to handle long-distance 2-meter cable capacitance. Testing showed it could be bypassed safely for our final setup.
-* **The Result:** Removing this physical chip eliminated its baseline overhead, reducing our standby and operational current by at least **200 $\mu\text{A}$**.
-
 
 

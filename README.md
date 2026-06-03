@@ -181,4 +181,4 @@ xychart-beta
 | **-4 dBm** | Standard Current | **0.38%** | 4.08 ms (Fixed) |
 | **0 dBm** | High Current | **0.52%** | 4.08 ms (Fixed) |
 | **+4 dBm** | Intense Current | **0.70%** | 4.08 ms (Fixed) |
-|
+---

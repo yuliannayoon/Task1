@@ -143,12 +143,10 @@ xychart-beta
 # ⚖️ Engineering Trade-Off Analysis
 > **Hardware & energy constraint optimization — three key trade-offs**
 
-본 시스템 설계 과정에서 직면한 하드웨어 및 에너지 제약 조건을 해결하기 위해 다음 **3가지 핵심 트레이드오프**를 정량적 데이터 분석을 통해 정의하고 최적화를 수행했습니다.
-
 ---
 
 ### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
-측정 주기가 길어질수록 배터리 수명은 기하급수적으로 증가합니다. 본 설계의 최적화된 프로필은 300초(5분) 주기로 세팅되어 데이터의 최신성을 유지함과 동시에 다년간의 필드 신뢰성을 보장합니다.
+
 
 * **Minimum Viable Limit (1년 수명 만족을 위한 최소 한계점):** 78 s ($\approx 2.50\text{ Years}$)
 * **Our Selected Configuration (최적화된 5분 주기 설계):** 300 s ($\approx 9.57\text{ Years}$)
@@ -158,7 +156,7 @@ xychart-beta
 ---
 
 ### 📊 Trade-off 2: Energy Consumption Breakdown per Measurement Cycle
-가스 센서(BME680) 내부의 내장 가열 소자(정격 가열 시간 150 ms) 구동 전력이 전체 전력 예산(Power Budget)을 절대적으로 지배합니다. 반면 MCU 웨이크업 단계 및 BLE RF 전송 페이즈가 차지하는 오버헤드는 극히 미미합니다.
+
 
 * **MCU Wake-up Phase:** $10.92\text{ mAs}$ ($0.31\%$)
 * **MS5607 Pressure & Temp Sampling:** $112.10\text{ mAs}$ ($3.17\%$)

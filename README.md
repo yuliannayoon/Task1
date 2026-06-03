@@ -88,6 +88,77 @@ xychart-beta
 
 ## 📝 Alternative
 
+# Task1
+
+## 📦 Deliverables
+### 📄 Schematic Document
+
+Below is the completed schematic design integrating the nRF52840 MCU, TPS62840 Buck Converter, LTC4311 I2C Bus Accelerator, and the BME680 / MS5607 sensor cluster.
+
+> 📂 **[View Full Schematic (PDF)](./TASK1_Sch.pdf)**
+
+---
+
+### 📝 Design Decisions & Assumptions (147 words)
+
+The proposed system consists of three primary functional blocks Power Management, Sensor Detection, and the Microprocessor. 
+The system is centered around the nRF52840 chipset, configured in Normal Voltage Mode to supply a uniform 3.3V operating voltage across all onboard sensors. It also leverages the chip's internal USB-to-Serial capability, using the physical PHY circuit to automatically detect PC connections.To maximize efficiency, the power distribution utilizes a high-efficiency DC-DC buck converter with an ultra-low quiescent current ($I_q$) of 60nA. This replaces conventional LDO regulators, eliminating excessive thermal dissipation caused by voltage differentials and output current.The sensor detection block integrates two sensors that share identical default $I^2C$ address options (0x76 and 0x77). To prevent address collision on the same bus, the hardware was configured to allocate unique addresses by tying the SDO pin of the MS5607 to Low (GND) and the CSB pin of the BME680 to High (VCC).To support 400kHz high-speed $I^2C$ communication over a 2-meter cable, an $I^2C$ bus accelerator (rise-time accelerator) was implemented. This actively counters signal distortion caused by increased cable capacitance and guarantees sharp rise times, ensuring robust signal integrity. 
+
+# Task2
+
+## 📦 Deliverables
+
+## 🏗️ System Block Diagram
+
+> 📂 **[View SYSTEM LAYOUT (PDF)](./SYSTETM%20LAYOUT.pdf)**
+
+## 🔋 System Power Budget & Battery Specification
+
+### 1. Battery & Hardware Baseline
+| Hardware Parameter | Description / Condition | Value | Unit |
+| :--- | :--- | :--- | :--- |
+| **Battery Type** | Lithium Thionyl Chloride (Li-SOCl2) | 3.6 | V |
+| **Nominal Capacity** | Manufacturer Specification | 1200 | mAh |
+| **Effective Usable Capacity** | Available Capacity after Standby Loss | 988.464 | mAh |
+| **System Regulated Voltage** | Output via External Ultra-low DC-DC Buck | 3.3 | V DC |
+| **MCU Power Mode** | nRF52840 Normal Voltage Mode ($V_{DD}=V_{DDH}$) | 3.3 | V |
+
+---
+
+### ⏱️ Duty Cycle & Timing Profiles
+| Operational State | Description | Duration | Unit |
+| :--- | :--- | :--- | :--- |
+| **Measurement Period** | Complete Cycle Interval (5 Minutes) | 300 | seconds |
+| **Active Time ($T_{active}$)** | Includes Wake-up, I2C, Sampling & BLE Tx | 269 | ms |
+| **Sleep Time ($T_{sleep}$)** | Ultra-low Leakage Standby State | 299,731 | ms |
+
+---
+
+### 📊 Power Budget & Lifespan Summary
+| Metric | Calculated Consumption | Unit |
+| :--- | :--- | :--- |
+| **Average Current Consumption** | 11.79 | $\mu\text{A}$ |
+| **Daily Energy Cost** | 0.282 | mAh / day |
+| **Annual Energy Cost** | 103.28 | mAh / year |
+| **Estimated System Longevity** | **9.57** | Years |
+
+---
+
+### 🛡️ Key Metrics & Hardware Margins
+| Metric | Target / Limit (ER14250H) | Calculated Value (Our Design) | Safety Factor / Margin | Status |
+| :--- | :---: | :---: | :---: | :---: |
+| **System Lifespan** | $\ge 1.0 \text{ Year}$ | **$9.57 \text{ Years}$** | **$9.5\times$ Lifetime Margin** | ⭐ **Overachieved** |
+| **Continuous Discharge** | $25.0 \text{ mA}$ | **$0.01179 \text{ mA}$** ($11.79\ \mu\text{A}$) | **$2,120\times$ Current Margin** | ✅ **Ultra Safe** |
+| **Peak Pulse Current** | $50.0 \sim 100.0 \text{ mA}$ | **$32.80 \text{ mA}$** | **$\ge 1.5\times$ Pulse Margin** | ✅ **Within Limit** |
+| **Annual Energy Cost** | $988.46 \text{ mAh}$ (Available) | **$103.28 \text{ mAh / year}$** | **$89.5\%$ Battery Buffer** | ✅ **Optimized** |
+
+---
+
+## 🔋 Detailed Energy Consumption Breakdown (Per 1 Cycle)
+
+| Operational Phase | Duration (ms) | Active Current (mA) | Battery-Referred Current (mA) | Energy Cost (mAs) |
+| :--- | :---: | :---: | :---: | :---: |
+| **MCU Wake-Up** | 2.50 | 4.80 |
 
 
 

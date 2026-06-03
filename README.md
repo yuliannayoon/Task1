@@ -71,13 +71,6 @@ The system is centered around the nRF52840 chipset, configured in Normal Voltage
 ## 📝 Summary 
 
 
-### Note:
-* **Decade-Long Battery Life:** By implementing a 5-minute (300s) deep sleep duty cycle and utilizing an external high-efficiency DC-DC Buck converter, the system successfully lowers its average current consumption to just **11.79 $\mu\text{A}$**. This allows the 3.6V Primary Lithium Battery (988.464 mAh effective capacity) to sustain continuous operation for over **9.5 years**, vastly exceeding the standard 1-year operational target.
-* **Optimized Power Conversion:** We took advantage of the nRF52840’s 1.3V internal core threshold by dropping the voltage via a Buck converter instead of an LDO. This structural choice successfully throttled the raw active-mode hardware current from **12.0 mA** down to a battery-referred current of **4.8 mA**.
-* **Zero-Leakage Firmware Strategy:** To eliminate idle power bleeding, the firmware actively disables the $I^2C$ peripheral immediately after sensor data acquisition, saving **500 $\mu\text{A}$** of active run current. Additionally, running the BME680 in **Forced Mode** ensures it returns to deep sleep immediately after sampling.
-* **Streamlined Hardware Footprint:** Through practical validation, we eliminated the LTC4311 I2C Bus Accelerator from the final assembly, cutting out redundant standby overhead and saving an extra **200 $\mu\text{A}$** of current.
-
-> 🛠️ **Conclusion:** The combination of an ultra-low quiescent current power rail ($I_q = 30\text{nA}$), optimized sensor operating profiles, and rigorous peripheral power-gating yields a highly reliable, maintenance-free environmental sensing node tailored for long-term field deployment.
 
 
 ##  Sampling Frequency vs Battery Life 

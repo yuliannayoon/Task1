@@ -108,3 +108,27 @@ xychart-beta
 | **Annual Energy Budget** | Available Cap:<br>· Saft: $988.46 \text{ mAh}$<br>· ER: $\approx 360 \text{ mAh}$* | **$103.28 \text{ mAh / year}$**<br>($89.5\%$ Buffer) | **$103.28 \text{ mAh / year}$**<br>($\approx 71.3\%$ Buffer) | ✅ **Optimized**<br>Calculated annual consumption ($103.28\text{ mAh}$) remains unchanged. |
 
 > `*` Note: ER10280 Available Capacity ($\approx 360\text{ mAh}$) is estimated assuming a 15% safety/chemical margin from its nominal $425\text{ mAh}$ profile.
+
+
+
+
+
+
+
+# ⚖️ Engineering Trade-Off Analysis
+> **Hardware & energy constraint optimization — three key trade-offs**
+
+---
+
+### 📊 Trade-off 1: Sampling Interval vs. Battery Lifespan
+Longer intervals lead to exponentially more battery life. Our optimized design sits safely at 300 seconds, balancing data freshness with multi-year field reliability.
+
+* **Minimum Viable Limit (1-Year target baseline with safety buffers):** 78 seconds ($\approx 2.50\text{ Years}$)
+* **Our Selected Configuration (Optimized 5-Minute Profile):** 300 seconds ($\approx 9.57\text{ Years}$)
+
+```mermaid
+xychart-beta
+    title "Sampling Interval vs. Battery Lifespan (Years)"
+    x-axis ["10s", "30s", "60s", "78s (Limit)", "120s", "180s", "300s (Ours)"]
+    y-axis "Battery Life (Years)" 0 --> 11
+    line [0.35, 1.05, 2.11, 2.50, 3.91, 6.10, 9.57]
